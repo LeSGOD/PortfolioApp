@@ -1,15 +1,9 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+    {% extends 'projects/base.html' %}
+    
+    {% load static %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Projects</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+    {% block content %}
 
-<body>
     <h1>Projects</h1>
     <div class="row">
         {% for project in projects %}
@@ -19,7 +13,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description }}</p>
-                    <a href="#" class="btn btn-primary">
+                    <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-primary">
                         Read More
                     </a>
                 </div>
@@ -27,6 +21,4 @@
         </div>
         {% endfor %}
     </div>
-</body>
-
-</html>
+    {% endblock %}
